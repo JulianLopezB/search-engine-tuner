@@ -1,0 +1,21 @@
+version: '3.11'
+
+services:
+
+  backend_stage:
+    build: .
+    network_mode: "host"
+    command: >
+      uvicorn search_engine.main:app 
+      --host 0.0.0.0 
+      --port 8000
+      --reload  
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - PORT=443
+    restart: always

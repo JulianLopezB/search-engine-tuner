@@ -1,0 +1,30 @@
+embedding:
+  type: "fasttext"  # or "transformer" or other embedding types
+  config:
+    model: 'skipgram'
+    dim: 300
+    epoch: 5
+    lr: 0.05
+    wordNgrams: 2
+    minn: 3
+    maxn: 6
+    minCount: 5
+    bucket: 2000000
+    thread: 4
+    lrUpdateRate: 100
+    model_path: "./fasttext_model.bin"
+  training_data_path: "data/bc_datos.xlsx"
+
+ingestion:
+  chunk_size: 300
+  chunk_overlap: 50
+
+evaluation:
+  articles_file: "data/bc_datos.xlsx"
+  rankings_file: "data/newq.txt"
+
+mlflow:
+  experiment_name: "FastText Evaluation"
+
+search:
+  types_to_evaluate: ['vector', 'keyword', 'hybrid']
