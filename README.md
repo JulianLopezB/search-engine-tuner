@@ -1,14 +1,28 @@
-# ContactNova Search Engine POC - Backend
+# Search Engine Tuner POC - Backend
 
-This is the backend component of the ContactNova Search Engine POC, built with FastAPI.
+This is the backend component of the Search Engine Tuner POC, built with FastAPI.
 
-## Features
+## Overview
+
+Search Engine Tuner is a comprehensive platform for calibrating and evaluating search engines using different embeddings and approaches. It supports various vector-based methods, including pretrained transformers from HuggingFace and OpenAI, as well as embeddings trained with algorithms like FastText.
+
+The platform allows the measurement of key metrics in information retrieval, such as topK precision, recall, MAP, MRR, NDCG, and more, using a customizable evaluation dataset.
+
+The project leverages synthetic data generation via generative AI to create evaluation datasets and employs mlflow for tracking results, adhering to MLOps best practices. Search Engine Tuner is scalable, language-agnostic, customizable, and performant, making it suitable for any document corpus.
+
+## Key Features
 
 - Vector-based search using Qdrant
 - Multiple embedding models support (FastText and Transformer-based)
 - Data ingestion and preprocessing
 - Evaluation of embedding models
 - Dockerized application for easy deployment
+- Supports vector, keyword, and hybrid engines
+- Embedding customization through pretrained models or FastText
+- Scalable and performant, adaptable to any language or corpus
+- MLOps best practices using mlflow
+- Tested on articles in Spanish and Galician
+- Serves as both a demo and a production environment for a client, including a frontend with a user-friendly UX
 
 ## Prerequisites
 
@@ -69,6 +83,27 @@ For detailed API documentation, visit `http://localhost:8001/docs` after startin
 - API routes are defined in `search_engine/api/routes/search.py`
 - Core search functionality is in `search_engine/search/search_service.py`
 - Evaluation logic is in `search_engine/evaluation/evaluator.py`
+
+## Evaluation and Metrics
+
+The platform allows measurement of key metrics in information retrieval, including:
+- Top-K Precision
+- Recall
+- Mean Average Precision (MAP)
+- Mean Reciprocal Rank (MRR)
+- Normalized Discounted Cumulative Gain (NDCG)
+
+## Data Generation
+
+Search Engine Tuner uses synthetic data generation via generative AI to create customizable evaluation datasets, ensuring a robust and diverse testing environment.
+
+## MLOps Integration
+
+The project adheres to MLOps best practices by using mlflow for experiment tracking and result logging, enabling better reproducibility and model management.
+
+## Language Support
+
+While primarily tested on articles in Spanish and Galician, Search Engine Tuner is designed to be language-agnostic and can be adapted to any document corpus.
 
 ## License
 
